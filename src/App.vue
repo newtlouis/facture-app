@@ -3,8 +3,18 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </div>
+  <FactureModel/>
   <router-view/>
 </template>
+
+<script>
+import FactureModel from "./components/FactureModel.vue"
+export default {
+  components:{
+    FactureModel
+  }
+}
+</script>
 
 <style lang="scss">
 
