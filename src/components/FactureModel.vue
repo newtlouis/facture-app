@@ -56,8 +56,50 @@
                 </div>
 
             </div>
+
+            <!-- Facture details -->
+            <div class="facture__detail">
+                <div class="input">
+                    <label for="factureDate">Date de facture</label>
+                    <input id="factureDate" v-model="factureDate" disabled type="text">
+                </div>
+                <div class="input">
+                    <label for="paymentDueDate">Date butoire</label>
+                    <input id="paymentDueDate" v-model="paymentDueDate" disabled type="text">
+                </div>
+                <div class="input">
+                    <label for="productDescription">Description</label>
+                    <input id="productDescription" v-model="productDescription" disabled type="text">
+                </div>
+
+                <h3>Liste des produits</h3>
+                <table>
+                    <tr class="table__heading">
+                        <th class="designation">Designation</th>
+                        <th class="qty">Quantité</th>
+                        <th class="price">Prix</th>
+                        <th class="total">Total</th>
+                    </tr>
+                    <tr class="talbe__item" v-for="(item, index) in factureList" :key="index">
+                        <td class="designation"><input v-model="item.Designation" type="text"></td>
+                        <td class="qty"><input v-model="item.qty" type="text"></td>
+                        <td class="price"><input v-model="item.price" type="text"></td>
+                        <td class="total">${{(item.total = item.qty * item.price) }}</td>
+                        <div class="deleteInvoiceItem" @click="deleteFactureItem(item.id)">x</div>
+                    </tr>
+                </table>
+                <div class="newItem" @click="addNewFactureItem">Ajouter un nouveau produit</div>
+            </div>
+
+            <!-- Save/Exit -->
+            <div class="save">
+                <button @click="closeFacture" class="closeFacture">Annuler</button>
+                <div class="save__right">
+                    <button class="save__draft">Enregister brouillon</button>
+                    <button class="save__facture">Enregister facture</button>
+                </div>
+            </div>
         </form>
-        facture
     </div>
 </template>
 
